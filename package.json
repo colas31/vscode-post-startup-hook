@@ -1,0 +1,66 @@
+{
+	"name": "post-startup-hook",
+	"displayName": "Post startup hook",
+	"description": "Execute automatically a predifined script at the startup of VSCode. Allow to setup the VSCode environment automatically specially in remote",
+	"version": "1.0.1",
+	"publisher": "colas",
+	"repository": {
+		"type": "github",
+		"url": "https://github.com/colas31/vscode-post-startup-hook.git"
+	},
+	"bugs": {
+		"url": "https://github.com/colas31/vscode-post-startup-hook/issues"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"engines": {
+		"vscode": "^1.54.3"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"vscode",
+		"automation",
+		"post startup",
+		"remote"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/index.js",
+	"files": [
+		"vscode-post-startup-hook.vsix"
+	],
+	"contributes": {
+		"configuration": {
+			"title": "Post startup hook",
+			"properties": {
+				"hook.postStartup": {
+					"type": "array",
+					"scope": "machine",
+					"default": [],
+					"description": "List of commands to run at startup of VSCode"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"package": "vsce package -o vscode-post-startup-hook.vsix"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/node": "^16.7.6",
+		"@types/vscode": "^1.54.0",
+		"@typescript-eslint/eslint-plugin": "^4.30.0",
+		"@typescript-eslint/parser": "^4.30.0",
+		"eslint": "^7.32.0",
+		"glob": "^7.1.5",
+		"typescript": "^4.2.4",
+		"vsce": "^1.75.0",
+		"vscode-test": "^1.2.2"
+	}
+}
