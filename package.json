@@ -49,7 +49,11 @@
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile",
-		"package": "vsce package -o vscode-post-startup-hook.vsix"
+		"package": "vsce package -o vscode-post-startup-hook.vsix",
+		"publish patch": "vsce publish patch",
+		"publish minor": "vsce publish minor",
+		"publish major": "vsce publish major",
+		"publish": "vsce publish"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
