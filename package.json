@@ -2,7 +2,7 @@
 	"name": "post-startup-hook",
 	"displayName": "Post startup hook",
 	"description": "Execute automatically a predefined script or commands at the startup of VSCode. Allow to setup the VSCode environment automatically specially in remote",
-	"version": "1.0.3",
+	"version": "1.3.0",
 	"publisher": "colas",
 	"repository": {
 		"type": "github",
@@ -50,9 +50,9 @@
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile",
 		"package": "vsce package -o vscode-post-startup-hook.vsix",
-		"publish patch": "vsce publish patch",
-		"publish minor": "vsce publish minor",
-		"publish major": "vsce publish major",
+		"publish patch": "vsce publish patch -m 'Release v%s'",
+		"publish minor": "vsce publish minor -m 'Release v%s'",
+		"publish major": "vsce publish major -m 'Release v%s'",
 		"publish": "vsce publish"
 	},
 	"devDependencies": {
