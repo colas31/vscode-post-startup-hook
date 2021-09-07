@@ -43,7 +43,7 @@ jobs:
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
-      - name: Push tag
-        run: git push
+      - name: Push new version & tag
+        run: git push origin --tags
 
 
