@@ -30,15 +30,20 @@ jobs:
       - name: Compile
         run: npm run 'compile'
 
-      - name: Publish
+      - name: Configure Git
         run: |
           # 'github-actions[bot]@users.noreply.github.com' OR action@github.com OR 41898282+github-actions[bot]@users.noreply.github.com
           # from https://api.github.com/users/github-actions%5Bbot%5D
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
           #'github-actions[bot]' OR "GitHub Action"
           git config --local user.name 'github-actions[bot]'
-          npm run 'publish minor'
+
+      - name: Publish to marketplace
+        run: npm run 'publish minor'
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+      - name: Push tag
+        run: git push
 
 
