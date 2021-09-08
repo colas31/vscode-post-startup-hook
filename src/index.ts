@@ -13,20 +13,19 @@ const scriptsLocationsRemote = [
     '~/.vscode-server-insiders', 
     '~/.vscode-remote', // Previous VS Code Server folder
     '~/.vscode-hook' // Dedicated path
-]
+];
 
 const homeDir = os.userInfo().homedir;
-const scriptsLocationsLaptop = 
-  [
+const scriptsLocationsLaptop = [
     path.join(homeDir, '/.vscode'),
     path.join(homeDir, '/.vscode-hook') // Dedicated path
-  ]
+];
  
 
 const scriptsLocationsLaptopLinux = [
     '~/.vscode/',
     '~/.vscode-hook' // Dedicated path
-]
+];
 
 const scriptName = 'vscode-startup-hook';
 // https://nodejs.org/api/child_process.html#child_process_default_windows_shell
@@ -60,14 +59,14 @@ async function runScript(command: string) {
       if (stderr) {
         outputChannel.appendLine(`stderr: ${stderr}`);
       }
-    })
+    });
   } catch (error: any) {
     outputChannel.appendLine(error.message);
     throw new Error(`Error when running the script ${command}\nError: ${error.message}`);
   }
 }
 
-function iterateExtensions(extensions: string[], filePath: string, callback: Function) {
+function iterateExtensions(extensions: string[], filePath: string, callback: any) {
   for (const extensionTmp of extensions) {
     const fileFullPath = `${filePath}.${extensionTmp}`;
     if (fs.existsSync(fileFullPath)) {
@@ -77,7 +76,7 @@ function iterateExtensions(extensions: string[], filePath: string, callback: Fun
 }
 
 const outputChannel = vscode.window.createOutputChannel("Post startup hook");
-export async function activate(_context: vscode.ExtensionContext) {
+export async function activate(_context: vscode.ExtensionContext): Promise<void> {
     outputChannel.clear();
     if (vscode.env.remoteName === undefined) {
       outputChannel.appendLine('Extension running locally');
@@ -114,6 +113,6 @@ export async function activate(_context: vscode.ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {
-
+export function deactivate(): void {
+  // do nothing. 
 }

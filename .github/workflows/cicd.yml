@@ -30,6 +30,9 @@ jobs:
       - name: Compile
         run: npm run 'compile'
 
+      - name: Lint
+        run: npm run 'lint'
+
       - name: Configure Git
         run: |
           # 'github-actions[bot]@users.noreply.github.com' OR action@github.com OR 41898282+github-actions[bot]@users.noreply.github.com
