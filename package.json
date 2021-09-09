@@ -53,7 +53,11 @@
 		"publish patch": "vsce publish patch -m 'Release v%s'",
 		"publish minor": "vsce publish minor -m 'Release v%s'",
 		"publish major": "vsce publish major -m 'Release v%s'",
-		"publish": "vsce publish"
+		"publish": "vsce publish",
+		"npm version patch": "npm version patch -m 'Release v%s'",
+		"npm version minor": "npm version minor -m 'Release v%s'",
+		"npm version major": "npm version major -m 'Release v%s'",
+		"version": "auto-changelog -p && git add CHANGELOG.md"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
@@ -61,6 +65,7 @@
 		"@types/vscode": "^1.54.0",
 		"@typescript-eslint/eslint-plugin": "^4.30.0",
 		"@typescript-eslint/parser": "^4.30.0",
+		"auto-changelog": "*",
 		"eslint": "^7.32.0",
 		"glob": "^7.1.5",
 		"typescript": "^4.2.4",

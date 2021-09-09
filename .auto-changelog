@@ -1,0 +1,7 @@
+{
+  "commitLimit": false,
+  "ignoreCommitPattern": "^(Release).*$",
+  "hide-credit": true,
+  "sort-commits": "date-desc",
+  "template":  "changelog-template.hbs"
+}
