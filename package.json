@@ -60,16 +60,16 @@
 		"version": "auto-changelog -p && git add CHANGELOG.md"
 	},
 	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/node": "^16.7.6",
+		"@types/glob": "^8.0.0",
+		"@types/node": "^18.7.14",
 		"@types/vscode": "^1.54.0",
-		"@typescript-eslint/eslint-plugin": "^4.30.0",
-		"@typescript-eslint/parser": "^4.30.0",
+		"@typescript-eslint/eslint-plugin": "^5.36.1",
+		"@typescript-eslint/parser": "^5.36.1",
 		"auto-changelog": "*",
-		"eslint": "^7.32.0",
-		"glob": "^7.1.5",
-		"typescript": "^4.2.4",
-		"vsce": "^1.75.0",
+		"eslint": "^8.23.0",
+		"glob": "^8.0.3",
+		"typescript": "^4.8.2",
+		"vsce": "^2.11.0",
 		"vscode-test": "^1.2.2"
 	}
 }
