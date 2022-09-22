@@ -55,7 +55,7 @@ jobs:
         id: semantic
         with: 
           dry_run: true
-          branches: ["master", "versionning"]
+          branches: "versionning"
           tag_format: 'v${version}'
           repository_url: https://github.com/colas31/vscode-post-startup-hook.git
 
