@@ -1,0 +1,79 @@
+name: CICD
+
+
+on:
+  push:
+    branches:
+      - "**"
+
+jobs: 
+
+  versionning:
+    name: versionning
+    
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+              fetch-depth: 0
+              
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15.x
+
+#https://github.com/marketplace/actions/git-semantic-version
+      - name: "Semantic version"
+        uses: paulhatch/semantic-version@v4.0.2
+        id: semantic-version
+        with:
+          # The prefix to use to identify tags
+          tag_prefix: "v"
+          # A string which, if present in a git commit, indicates that a change represents a
+          # major (breaking) change, supports regular expressions wrapped with '/'
+          major_pattern: "(breaking|major)"
+          # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
+          minor_pattern: "/(feature|minor)/"
+          # A string to determine the format of the version output
+          format: "${major}.${minor}.${patch}"
+          # Optional path to check for changes. If any changes are detected in the path the
+          # 'changed' output will true. Enter multiple paths separated by spaces.
+          change_path: "src/my-service"
+          # Named version, will be used as suffix for name version tag
+          namespace: my-service
+          # If this is set to true, *every* commit will be treated as a new version.
+          bump_each_commit: false
+          # If true, the body of commits will also be searched for major/minor patterns to determine the version type.
+          search_commit_body: false
+          # The output method used to generate list of users, 'csv' or 'json'.
+          user_format_type: "csv"
+
+      - run: echo version generated ${{ steps.semantic-version.outputs.version }}
+      - run: echo version generated ${{ steps.semantic-version.outputs.changed }}
+
+      #https://github.com/marketplace/actions/semantic-release-action
+      - uses: codfish/semantic-release-action@v2
+        id: semantic
+        with: 
+          dry_run: true
+
+      - run: echo ${{ steps.semantic.outputs.release-version }}
+
+      - run: echo "$OUTPUTS"
+        env:
+          OUTPUTS: ${{ toJson(steps.semantic.outputs) }}
+      - run: |
+          echo $RELEASE_VERSION
+          echo $RELEASE_MAJOR
+          echo $RELEASE_MINOR
+          echo $RELEASE_PATCH
+

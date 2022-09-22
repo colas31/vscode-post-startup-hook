@@ -50,14 +50,15 @@
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile",
 		"package": "vsce package -o vscode-post-startup-hook.vsix",
-		"publish patch": "vsce publish patch -m 'Release v%s'",
-		"publish minor": "vsce publish minor -m 'Release v%s'",
-		"publish major": "vsce publish major -m 'Release v%s'",
 		"publish": "vsce publish",
 		"npm version patch": "npm version patch -m 'Release v%s'",
 		"npm version minor": "npm version minor -m 'Release v%s'",
 		"npm version major": "npm version major -m 'Release v%s'",
-		"version": "auto-changelog -p && git add CHANGELOG.md"
+		"version": "auto-changelog -p && git add CHANGELOG.md",
+        "publish patch": "vsce publish patch -m \"Release v%s\"",
+        "publish minor": "vsce publish minor -m \"Release v%s\"",
+        "publish major": "vsce publish major -m \"Release v%s\"",
+        "getCurrentVersion": "npm pkg get version | xargs echo"
 	},
 	"devDependencies": {
 		"@types/glob": "^8.0.0",
