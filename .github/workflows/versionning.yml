@@ -19,18 +19,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-              fetch-depth: 0
+            fetch-depth: 0
               
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-
-      - name: Install Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 15.x
-
 #https://github.com/marketplace/actions/git-semantic-version
       - name: "Semantic version"
         uses: paulhatch/semantic-version@v4.0.2
@@ -47,9 +37,8 @@ jobs:
           format: "${major}.${minor}.${patch}"
           # Optional path to check for changes. If any changes are detected in the path the
           # 'changed' output will true. Enter multiple paths separated by spaces.
-          change_path: "src/my-service"
           # Named version, will be used as suffix for name version tag
-          namespace: my-service
+          namespace: ""
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
           # If true, the body of commits will also be searched for major/minor patterns to determine the version type.
