@@ -53,7 +53,7 @@ jobs:
         run: npm run debug --newversion=${{ steps.semantic-version.outputs.version }}
 
       - name: Publish to marketplace
-        run: npm run 'publish publishVersion' --newversion=${{ steps.semantic-version.outputs.version }}
+        run: npm run publishVersion --newversion=${{ steps.semantic-version.outputs.version }}
         env:
           VSCE_PAT: ${{ secrets.VSCE }}
         
