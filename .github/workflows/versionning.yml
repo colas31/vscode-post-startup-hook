@@ -30,9 +30,9 @@ jobs:
           tag_prefix: "v"
           # A string which, if present in a git commit, indicates that a change represents a
           # major (breaking) change, supports regular expressions wrapped with '/'
-          major_pattern: "(breaking|major)"
+          major_pattern: "((BREAKING CHANGE|major):?|\S*!).*"
           # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
-          minor_pattern: "/(feature|minor)/"
+          minor_pattern: "/(feature|minor|feat):?[^!].*/"
           # A string to determine the format of the version output
           format: "${major}.${minor}.${patch}"
           # Optional path to check for changes. If any changes are detected in the path the
@@ -49,25 +49,13 @@ jobs:
       - run: echo version generated ${{ steps.semantic-version.outputs.version }}
       - run: echo version generated ${{ steps.semantic-version.outputs.changed }}
 
-      #https://github.com/marketplace/actions/semantic-release-action
-      - name: semantic-release-action
-        uses: codfish/semantic-release-action@v2
-        id: semantic
-        with: 
-          dry_run: true
-          branches: "versionning"
-          tag_format: 'v${version}'
-          repository_url: https://github.com/colas31/vscode-post-startup-hook.git
+      - name: Debug
+        run: npm run debug --newversion=${{ steps.semantic-version.outputs.version }}
 
-      - run: |
-          echo ${{ steps.semantic.outputs.release-version }}
-          echo $RELEASE_VERSION
-          echo $RELEASE_MAJOR
-          echo $RELEASE_MINOR
-          echo $RELEASE_PATCH
-          echo "$OUTPUTS"
+      - name: Publish to marketplace
+        run: npm run 'publish publishVersion' --newversion=${{ steps.semantic-version.outputs.version }}
         env:
-          OUTPUTS: ${{ toJson(steps.semantic.outputs) }}
+          VSCE_PAT: ${{ secrets.VSCE }}
         
 
           

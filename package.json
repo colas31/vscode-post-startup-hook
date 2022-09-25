@@ -55,10 +55,12 @@
 		"npm version minor": "npm version minor -m 'Release v%s'",
 		"npm version major": "npm version major -m 'Release v%s'",
 		"version": "auto-changelog -p && git add CHANGELOG.md",
+        "publishVersion": "vsce publish %npm_config_newversion% -m \"Release v%s\"",
         "publish patch": "vsce publish patch -m \"Release v%s\"",
         "publish minor": "vsce publish minor -m \"Release v%s\"",
         "publish major": "vsce publish major -m \"Release v%s\"",
-        "getCurrentVersion": "npm pkg get version | xargs echo"
+        "getCurrentVersion": "npm pkg get version | xargs echo",
+		"debug": "echo new version computed ${npm_config_newversion} et $npm_config_newversion et %npm_config_newversion%"
 	},
 	"devDependencies": {
 		"@types/glob": "^8.0.0",
