@@ -28,8 +28,8 @@ jobs:
           
       - name: Run NPM install
         run: npm install  
-        
-             
+
+
 #https://github.com/marketplace/actions/git-semantic-version
       - name: "Semantic version"
         uses: paulhatch/semantic-version@v4.0.2
@@ -39,7 +39,7 @@ jobs:
           tag_prefix: "v"
           # A string which, if present in a git commit, indicates that a change represents a
           # major (breaking) change, supports regular expressions wrapped with '/'
-          major_pattern: "/((BREAKING CHANGE|major):?|\S*!).*/"
+          major_pattern: "/((BREAKING CHANGE|major):?|\\S*!).*/"
           # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
           minor_pattern: "/(feature|minor|feat):?[^!].*/"
           # A string to determine the format of the version output
