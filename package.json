@@ -4,6 +4,7 @@
 	"description": "Execute automatically a predefined script or commands at the startup of VSCode. Allow to setup the VSCode environment automatically specially in remote",
 	"version": "1.6.0",
 	"publisher": "colas",
+	"icon": "icons/Post-startup-hook-256.png",
 	"repository": {
 		"type": "github",
 		"url": "https://github.com/colas31/vscode-post-startup-hook.git"
@@ -29,7 +30,8 @@
 	],
 	"main": "./out/index.js",
 	"files": [
-		"vscode-post-startup-hook.vsix"
+		"vscode-post-startup-hook.vsix",
+		"icons/Post-startup-hook-256.png"
 	],
 	"contributes": {
 		"configuration": {
